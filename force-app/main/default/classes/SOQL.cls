@@ -27,9 +27,11 @@ public with sharing class SOQL {
 	 * @return List of all leads with Id, LastName, Company, Phone, Email
 	 * Update the corresponding test class and testGetAllLeads method to cover this method
 	 */
-	//[public | private ] [static] data_type method_name (input parameters) {
+	public static List<Lead> getAllLeads() {
 	//  The body of the method
-	//}
+	List<Lead> orgLeads = [SELECT Id, LastName, Company, Phone, Email FROM Lead];
+	return orgLeads;
+	}
 
 	/**
 	 * Question 2
