@@ -222,7 +222,9 @@ public with sharing class SOQL {
 	 * @return A list of Contacts
 	 */
 	public static List<Contact> getBirthdateContacts() {
-		return null; // Replace null with the variable you used to store the result
+		List<Contact> recentBirthdays = [SELECT Id, Name, Birthdate FROM Contact WHERE Birthdate = LAST_N_Months:12 ORDER BY Birthdate DESC LIMIT 3];
+		
+		return recentBirthdays; // Replace null with the variable you used to store the result
 	}
 
 	/**
