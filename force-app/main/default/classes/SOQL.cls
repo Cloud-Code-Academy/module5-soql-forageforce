@@ -223,7 +223,6 @@ public with sharing class SOQL {
 	 */
 	public static List<Contact> getBirthdateContacts() {
 		List<Contact> recentBirthdays = [SELECT Id, Name, Birthdate FROM Contact WHERE Birthdate = LAST_N_Months:12 ORDER BY Birthdate DESC LIMIT 3];
-		
 		return recentBirthdays; // Replace null with the variable you used to store the result
 	}
 
@@ -233,7 +232,8 @@ public with sharing class SOQL {
 	 * @return A list of Cases
 	 */
 	public static List<Case> getCasesWithStatus() {
-		return null; // Replace null with the variable you used to store the result
+		List<Case> myOpenCases = [SELECT Id, CreatedDate, Status FROM Case WHERE Status = 'Open' ORDER BY CreatedDate LIMIT 10 OFFSET 5];
+		return myOpenCases; // Replace null with the variable you used to store the result
 	}
 
 	/**
